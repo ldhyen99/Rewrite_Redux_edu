@@ -4,7 +4,6 @@ import reportWebVitals from './reportWebVitals';
 import StoreContainer from './Redux/storeContainer';
 import { reducer } from './Redux/myReducers';
 import { GeneralizedComponent } from './Redux/Components/GeneralizedComponent';
-import './index.css';
 
 let StoreContainedGeneralizedComponent = StoreContainer(GeneralizedComponent, {
   reducer,
