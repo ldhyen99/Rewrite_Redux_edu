@@ -11,13 +11,16 @@ export default function StoreContainer(Component, reducers) {
       super(props);
       // We have to call this to create the initial React
       // component and get a `this` value to work with
-      this.state = store.getState();
+      this.state = { ...store.getState(), currentState: '' };
+    }
+
+    componentWillMount() {
       this.instSubscriber = subscriber.bind(this);
       store.subscribe(this.instSubscriber);
       store.addReducers(reducers);
     }
 
-    componentWillUnmount() {
+    UNSAFE_componentWillMount() {
       store.unsubscribe(this.instSubscriber);
     }
 

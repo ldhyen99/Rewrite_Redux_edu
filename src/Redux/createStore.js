@@ -3,8 +3,19 @@ var store;
 
 function getInstance() {
   if (!store) store = createStore();
+  console.log({ store });
+
   return store;
 }
+
+const validateAction = (action) => {
+  if (!action || typeof action !== 'object' || Array.isArray(action)) {
+    throw new Error('Action must be an object!');
+  }
+  if (typeof action.type === 'undefined') {
+    throw new Error('Action must have a type!');
+  }
+};
 
 function createStore() {
   var currentState = {};
@@ -16,6 +27,7 @@ function createStore() {
   };
 
   function dispatch(action) {
+    validateAction(action);
     var prevState = currentState;
     currentState = currentReducer(_.cloneDeep(currentState), action);
     subscribers.forEach(function (subscriber) {

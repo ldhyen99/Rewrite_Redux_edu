@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import StoreContainer from './Redux/storeContainer';
-import { reducer } from './Redux/myReducers';
-import { GeneralizedComponent } from './Redux/Components/GeneralizedComponent';
-
-let StoreContainedGeneralizedComponent = StoreContainer(GeneralizedComponent, {
-  reducer,
-});
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreContainedGeneralizedComponent myProp="foo" />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
