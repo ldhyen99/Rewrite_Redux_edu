@@ -1,4 +1,6 @@
-const NoteEditor = ({ note, onChangeNote, onCloseNote }) => (
+import * as React from 'react';
+
+export const NoteEditor = ({ note, onChangeNote, onCloseNote }) => (
   <div>
     <div>
       <textarea
@@ -14,7 +16,7 @@ const NoteEditor = ({ note, onChangeNote, onCloseNote }) => (
   </div>
 );
 
-const NoteTitle = ({ note }) => {
+export const NoteTitle = ({ note }) => {
   const title = note.content.split('\n')[0].replace(/^\s+|\s+$/g, '');
   if (title === '') {
     return <i>Untitled</i>;
@@ -22,7 +24,7 @@ const NoteTitle = ({ note }) => {
   return <span>{title}</span>;
 };
 
-const NoteLink = ({ note, onOpenNote }) => (
+export const NoteLink = ({ note, onOpenNote }) => (
   <li className="note-list-item">
     <a href="#edit" onClick={() => onOpenNote(note.id)}>
       <NoteTitle note={note} />
