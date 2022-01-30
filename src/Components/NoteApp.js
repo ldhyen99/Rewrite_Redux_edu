@@ -32,7 +32,7 @@ export const NoteLink = ({ note, onOpenNote }) => (
   </li>
 );
 
-const NoteList = ({ notes, onOpenNote }) => (
+export const NoteList = ({ notes, onOpenNote }) => (
   <ul className="note-list">
     {Object.keys(notes).map((id) => (
       <NoteLink key={id} note={notes[id]} onOpenNote={onOpenNote} />
