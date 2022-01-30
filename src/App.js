@@ -1,7 +1,7 @@
 import React from 'react';
 
 import StoreContainer from './Redux/storeContainer';
-import { reducer } from './Redux/store/myReducers';
+import { reducer } from './Redux/store/reducers';
 import { GeneralizedComponent } from './Components/GeneralizedComponent';
 
 let StoreContainedGeneralizedComponent = StoreContainer(GeneralizedComponent, {

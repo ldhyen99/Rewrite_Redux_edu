@@ -7,6 +7,8 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
+  console.log(action);
+
   switch (action.type) {
     case types.CREATE_NOTE: {
       const id = state.nextNoteId;
@@ -25,7 +27,7 @@ export const reducer = (state = initialState, action) => {
       };
     }
     case types.UPDATE_NOTE: {
-      const { id, content } = action.dataLoad;
+      const { id, content } = action.payload;
       const editedNote = {
         ...state.notes[id],
         content,
@@ -41,7 +43,7 @@ export const reducer = (state = initialState, action) => {
     case types.OPEN_NOTE: {
       return {
         ...state,
-        openNoteId: action.dataLoad.id,
+        openNoteId: action.payload.id,
       };
     }
     case types.CLOSE_NOTE: {
