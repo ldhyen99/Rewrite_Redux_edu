@@ -20,7 +20,7 @@ export default function StoreContainer(Component, reducers) {
       store.addReducers(reducers);
     }
 
-    UNSAFE_componentWillMount() {
+    componentWillUnmount() {
       store.unsubscribe(this.instSubscriber);
     }
 

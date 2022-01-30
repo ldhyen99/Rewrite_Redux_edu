@@ -16,7 +16,7 @@ export const GeneralizedComponent = () => {
   const handleStoreDispatch = (actionType, state) => {
     store.dispatch({
       type: actionType,
-      dataLoad: { ...state },
+      payload: { ...state },
     });
     getDataFromRedux();
   };
