@@ -5,6 +5,7 @@ import {
   NoteTitle,
   NoteList,
   NoteEditor,
+  NoteApp,
 } from '../src/Components/NoteApp';
 
 describe('NoteApp', () => {
@@ -14,7 +15,7 @@ describe('NoteApp', () => {
 
   const rendersWithProps = (Component, checkProps, content, params) => {
     let props = {};
-
+    console.log({ params });
     if (checkProps === 'note') {
       props = {
         note: {
@@ -28,6 +29,7 @@ describe('NoteApp', () => {
       props = {
         notes: { ...params?.notesData } || {},
         onOpenNote: false,
+        openNoteId: params?.openNoteId || null,
       };
     }
 
@@ -126,6 +128,24 @@ describe('NoteApp', () => {
       textarea.simulate('change', { target: 'hi' });
 
       expect(onChangeNote).toHaveBeenCalled();
+    });
+  });
+
+  describe('NoteApp', () => {
+    const rendersNoteAppWithProps = (check) => {
+      let openNoteId = check;
+      rendersWithProps(NoteApp, 'notes', '', { openNoteId });
+    };
+
+    it('renders New Not button with openNoteId false', () => {
+      rendersNoteAppWithProps(false);
+      expect(wrapper.find(NoteList).length).toBe(1);
+      expect(wrapper.find('button').text()).toBe('New Note');
+    });
+
+    it('renders NoteEditor comp with openNoteId true', () => {
+      rendersNoteAppWithProps(true);
+      expect(wrapper.find(NoteEditor).length).toBe(1);
     });
   });
 });
